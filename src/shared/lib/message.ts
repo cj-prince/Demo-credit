@@ -1,0 +1,17 @@
+export const OPERATION_SUCCESSFUL = (resource: string) => `${resource} operation successful.`;
+export const INVALID_INPUT = (resource: string) => `Invalid ${resource} credentials.`;
+export const RESOURCE_ALREADY_EXISTS = (resource: string) => `This ${resource} already exists.`;
+export const RESOURCE_DOES_NOT_EXIST = (resource: string) => `This ${resource} does not exist.`;
+export const PASSWORD_RESET_MAIL_SENT = (resource: string) => `A 4-digit OTP code was successfully sent to ${resource}`;
+export const EXPIRED_RESOURCE = (resource: string) => `Invalid or expired ${resource}.`;
+export const FETCHED_DATA_SUCCESSFULLY = (resource: string) => `Successfully fetched ${resource}.`;
+export const CREATED_DATA_SUCCESSFULLY = (resource: string) => `${resource} created successfully.`;
+export const UPDATED_DATA_SUCCESSFULLY = (resource: string) => `Successfully updated ${resource}.`;
+export const DELETED_DATA_SUCCESSFULLY = (resource: string) => `${resource} successfully deleted.`;
+export const SAME_DATA = (resource: string) => `${resource} are the same.`;
+export const DATA_MISMATCH = (resource: string) => `${resource} do not match.`;
+export const RESOURCE_MESSAGE = (resource: string) => `${resource}`;
+export const OPERATION_FAILED = (resource: string) => `${resource} operation failed.`;
+export const UPLOADED_RESOURCE_SUCCESSFULLY = (resource: string) => `${resource} uploaded successfully.`;
+export const RESOURCE_NOT_FOUND = (resource: string) => `${resource} not found.`;
+export const SUB_CATEGORIES_LIST = ['0000cba0-4091-4fd3-9e95-3d4a574216c4', '0007e953-d063-4868-af14-8214fa06dc80'];

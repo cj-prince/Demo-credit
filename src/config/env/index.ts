@@ -1,0 +1,14 @@
+import development from './development';
+import test from './test';
+import { JwtSignature } from '../../shared/interface';
+
+export const JwtSignOptions: JwtSignature = {
+  issuer: 'Template',
+  subject: 'Authentication Token',
+  audience: 'https://template.com',
+};
+
+export default {
+  development,
+  test,
+}[process.env.TEMPLATE_NODE_ENV || 'development'];

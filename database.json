@@ -1,0 +1,12 @@
+{
+	"development": {
+		"ENV": "DEMOCREDIT_DEV_DATABASE_URL"
+	},
+	"test": {
+		"ENV": "DEMOCREDIT_TEST_DATABASE_URL"
+	},
+	"production": {
+		"ENV": "DEMOCREDIT_PRODUCTION_DATABASE_URL"
+	},
+	"sql-file" : true
+}
