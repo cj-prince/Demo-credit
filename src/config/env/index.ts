@@ -8,7 +8,8 @@ export const JwtSignOptions: JwtSignature = {
   audience: 'https://template.com',
 };
 
+
 export default {
   development,
   test,
-}[process.env.TEMPLATE_NODE_ENV || 'development'];
+}[process.env.DEMOCREDIT_NODE_ENV || "development"];

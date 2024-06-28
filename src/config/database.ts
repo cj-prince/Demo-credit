@@ -6,14 +6,14 @@ config();
 const development: Knex.Config = {
   client: "mysql2",
   connection: {
-    host: process.env.DEMOCREDIT_DEV_DATABASE_HOST || "127.0.0.1",
-    port: Number(process.env.DEMOCREDIT_DEV_DATABASE_PORT) || 3306,
-    user: process.env.DEMOCREDIT_DEV_DATABASE_USER || "root",
-    password: process.env.DEMOCREDIT_DEV_DATABASE_PASSWORD || "",
-    database: process.env.DEMOCREDIT_DEV_DATABASE_NAME || "democredit_dev",
+    host: process.env.DEMOCREDIT_DEV_DATABASE_HOST,
+    port: Number(process.env.DEMOCREDIT_DEV_DATABASE_PORT),
+    user: process.env.DEMOCREDIT_DEV_DATABASE_USER,
+    password: process.env.DEMOCREDIT_DEV_DATABASE_PASSWORD,
+    database: process.env.DEMOCREDIT_DEV_DATABASE_NAME,
   },
   migrations: {
-    tableName: "knex_migrations",
+    tableName: "migrations",
   },
   seeds: {
     directory: "./seeds",
@@ -29,7 +29,7 @@ const production: Knex.Config = {
     database: process.env.DB_NAME,
   },
   migrations: {
-    tableName: "knex_migrations",
+    tableName: "migrations",
   },
   seeds: {
     directory: "./seeds",
