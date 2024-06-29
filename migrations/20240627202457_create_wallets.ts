@@ -4,8 +4,14 @@ export async function up(knex: Knex): Promise<void> {
   await knex.schema.dropTableIfExists("wallets");
 
   await knex.schema.createTable("wallets", (table) => {
-    table.increments("id").primary();
-    table.string("user_id").notNullable().unique();
+    table.uuid("id").primary().defaultTo(knex.raw("(UUID())"));
+    table
+      .uuid("user_id")
+      .notNullable()
+      .references("id")
+      .inTable("users")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
     table.string("currency").defaultTo("NGN");
     table.string("wallet_name").notNullable();
     table.string("wallet_number").notNullable();

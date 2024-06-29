@@ -16,9 +16,9 @@ import {
 export class AuthenticationController {
   public createUserAccount: fnRequest = async (req, res) => {
     const payload = new dtos.CreateUserAccountDto(req.body);
-    const response = await AuthenticationService.CreateUserAccount(payload);
+    const response = await AuthenticationService.createUserAccount(payload);
     loggerWrapper.info(
-      "User account created successfully :: controller.user.auth.js"
+      "User account created successfully :: authentication.controller.ts"
     );
     return Response.success(
       res,
@@ -34,7 +34,7 @@ export class AuthenticationController {
     const payload = new dtos.UserAccountLoginDto(req.body);
 
     try {
-      const response = await AuthenticationService.UserAccountLogin(payload);
+      const response = await AuthenticationService.userAccountLogin(payload);
 
       if (response instanceof BadException) {
         return Response.error(

@@ -1,50 +1,42 @@
 import * as dtos from "./dto";
-import { connection } from "../../config/knex";
+import authenticationRepository from "./repositories";
 import hashingService, { HashingService } from "../../shared/hashing";
-import * as entities from "./entities";
-import * as message from "../../shared/lib/message";
-import {
-  BadException
-} from "../../shared/lib/errors";
+import * as entities from "./entities"
+import { BadException } from "../../shared/lib/errors";
+import { generateRandomNumber } from "../../shared/helpers";
 
 export interface AuthenticationServiceInterface {
-  CreateUserAccount(payload: dtos.CreateUserAccountDto): Promise<string>;
-  UserAccountLogin(
+  createUserAccount(payload: dtos.CreateUserAccountDto): Promise<void>;
+  userAccountLogin(
     payload: dtos.UserAccountLoginDto
   ): Promise<BadException | entities.UserEntity>;
 }
 
-export class AuthenticationServiceImpl implements AuthenticationServiceInterface {
+export class AuthenticationServiceImpl
+  implements AuthenticationServiceInterface
+{
   constructor(private readonly hashingService: HashingService) {}
 
-  public CreateUserAccount = async (
+  public createUserAccount = async (
     payload: dtos.CreateUserAccountDto
-  ): Promise<string> => {
+  ): Promise<void> => {
     const hashed = await this.hashingService.hash(payload.password);
     payload.password = hashed;
+    const walletNumber = await generateRandomNumber();
+    const walletName = `${payload.first_name} ${payload.last_name}`;
+    await authenticationRepository.createUserAccount(
+      payload,
+      walletNumber,
+      walletName
+    );
 
-    await connection("users").insert(payload);
-    return "User account created successfully";
+    // return response;
   };
 
-  public UserAccountLogin = async (
+  public userAccountLogin = async (
     payload: dtos.UserAccountLoginDto
   ): Promise<BadException | entities.UserEntity> => {
-    const { email } = payload;
-    const user = await connection("users").where({ email }).first();
-
-    if (!user) {
-      return new BadException(message.INVALID_INPUT("login"));
-    }
-
-    const response: entities.UserEntity = new entities.UserEntity({
-      id: user.id,
-      email: user.email,
-      username: user.user_type,
-      password: user.password,
-      first_name: user.first_name,
-      last_name: user.last_name,
-    });
+    const response = await authenticationRepository.userAccountLogin(payload);
 
     return response;
   };
