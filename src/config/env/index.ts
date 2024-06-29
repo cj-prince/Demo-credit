@@ -3,9 +3,9 @@ import test from './test';
 import { JwtSignature } from '../../shared/interface';
 
 export const JwtSignOptions: JwtSignature = {
-  issuer: 'Template',
-  subject: 'Authentication Token',
-  audience: 'https://template.com',
+  issuer: "Democredit",
+  subject: "Authentication Token",
+  audience: "https://democredit.com",
 };
 
 

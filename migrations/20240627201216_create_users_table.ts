@@ -1,6 +1,8 @@
 import type { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
+  await knex.schema.dropTableIfExists("users");
+
   return knex.schema.createTable("users", (table) => {
     table.uuid("id").primary().defaultTo(knex.raw("(UUID())"));
     table.string("first_name").notNullable();
@@ -9,7 +11,9 @@ export async function up(knex: Knex): Promise<void> {
     table.string("email").notNullable().unique();
     table.string("password").notNullable();
     table.string("phone_number").notNullable();
-    table.string("country").notNullable();
+    table.string("country").defaultTo("NGN");
+    table.string("country_code").defaultTo("234");
+    table.string("terms_and_conditions").notNullable();
     table.timestamps(true, true);
   });
 }

@@ -25,3 +25,7 @@ export const success = (
     data,
   });
 };
+
+export function DB_error(res: Response): void {
+  res.status(500).json({ error: "Database error occurred" });
+}

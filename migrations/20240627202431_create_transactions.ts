@@ -1,6 +1,8 @@
 import type { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
+  await knex.schema.dropTableIfExists("transactions");
+
   return knex.schema.createTable("transactions", (table) => {
     table.uuid("id").primary().defaultTo(knex.raw("(UUID())"));
     table.string("wallet_id").notNullable().unique();

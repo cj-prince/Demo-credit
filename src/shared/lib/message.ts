@@ -5,6 +5,7 @@ export const RESOURCE_DOES_NOT_EXIST = (resource: string) => `This ${resource} d
 export const PASSWORD_RESET_MAIL_SENT = (resource: string) => `A 4-digit OTP code was successfully sent to ${resource}`;
 export const EXPIRED_RESOURCE = (resource: string) => `Invalid or expired ${resource}.`;
 export const FETCHED_DATA_SUCCESSFULLY = (resource: string) => `Successfully fetched ${resource}.`;
+export const USER_SUCCESSFULLY = (resource: string) => `${resource} Successfully .`;
 export const CREATED_DATA_SUCCESSFULLY = (resource: string) => `${resource} created successfully.`;
 export const UPDATED_DATA_SUCCESSFULLY = (resource: string) => `Successfully updated ${resource}.`;
 export const DELETED_DATA_SUCCESSFULLY = (resource: string) => `${resource} successfully deleted.`;
