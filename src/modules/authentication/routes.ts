@@ -10,6 +10,7 @@ const authRouter = Router();
 authRouter.post(
   "/register",
   validateDataMiddleware(validators.registerValidatorSchema, "body"),
+  authenticationMiddleware.checkBlacklist,
   authenticationMiddleware.checkIfRegisterEmailExists,
   authenticationMiddleware.checkIfPhoneNumberIsAlreadyUsed,
   authenticationMiddleware.checkIfUserNameExist,

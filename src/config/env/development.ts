@@ -17,6 +17,7 @@ const development = {
   CRYPTO_OTP_LENGTH: process.env.DEMOCREDIT_DEV_CRYPTO_OTP_LENGTH,
   CRYPTO_HASH_ALGO: process.env.DEMOCREDIT_DEV_CRYPTO_HASH_ALGO,
   SALT_ROUND: process.env.DEMOCREDIT_DEV_SALT_ROUND,
+  KARMA_API_KEY: process.env.KARMA_API_KEY,
 };
 
 export default development;

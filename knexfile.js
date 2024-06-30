@@ -29,11 +29,10 @@ module.exports = {
   testing: {
     client: "mysql2",
     connection: {
-      host: process.env.DEMOCREDIT_TEST_DATABASE_HOST,
-      database:
-        process.env.DEMOCREDIT_TEST_DATABASE_NAME,
-      user: process.env.DEMOCREDIT_TEST_DATABASE_USER,
-      password: process.env.DEMOCREDIT_TEST_DATABASE_PASSWORD,
+      host: process.env.DEMOCREDIT_DEV_DATABASE_HOST,
+      database: process.env.DEMOCREDIT_TEST_DATABASE_NAME,
+      user: process.env.DEMOCREDIT_DEV_DATABASE_USER,
+      password: process.env.DEMOCREDIT_DEV_DATABASE_PASSWORD,
     },
     pool: {
       min: 2,

@@ -3,6 +3,7 @@ import { Knex } from "knex";
 
 config();
 
+
 const development: Knex.Config = {
   client: "mysql2",
   connection: {
@@ -11,6 +12,23 @@ const development: Knex.Config = {
     user: process.env.DEMOCREDIT_DEV_DATABASE_USER,
     password: process.env.DEMOCREDIT_DEV_DATABASE_PASSWORD,
     database: process.env.DEMOCREDIT_DEV_DATABASE_NAME,
+  },
+  migrations: {
+    tableName: "migrations",
+  },
+  seeds: {
+    directory: "./seeds",
+  },
+};
+
+const test: Knex.Config = {
+  client: "mysql2",
+  connection: {
+    host: process.env.DEMOCREDIT_DEV_DATABASE_HOST,
+    port: Number(process.env.DEMOCREDIT_DEV_DATABASE_PORT),
+    user: process.env.DEMOCREDIT_DEV_DATABASE_USER,
+    password: process.env.DEMOCREDIT_DEV_DATABASE_PASSWORD,
+    database: process.env.DEMOCREDIT_TEST_DATABASE_NAME,
   },
   migrations: {
     tableName: "migrations",
@@ -38,6 +56,7 @@ const production: Knex.Config = {
 
 const knexConfig: { [key: string]: Knex.Config } = {
   development,
+  test,
   production,
 };
 

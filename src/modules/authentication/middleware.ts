@@ -4,7 +4,8 @@ import loggerWrapper from "../../shared/log_wrapper";
 import * as ApiResponse from "../../shared/lib/api-response";
 import * as Enum from "../../shared/lib/message";
 import { StatusCodes } from "http-status-codes";
-
+import axios from "axios";
+import Env from "../../shared/utils/env";
 
 export const checkIfUserNameExist = async (
   req: Request,
@@ -89,4 +90,38 @@ export const checkIfRegisterEmailExists = async (
   }
 };
 
+export const checkBlacklist = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  if (Env.get<string>("NODE_ENV") === "test") return next();
+  const { email } = req.body;
 
+  try {
+    const response = await axios.get(
+      `https://api.lendsqr.com/v2/verification/karma/${email}`,
+      {
+        headers: {
+          Authorization: `Bearer ${Env.get<string>("KARMA_API_KEY")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const check = response.data.amount_in_contention;
+    if (check > 0) {
+      loggerWrapper.error(
+        `${email}: User is blacklisted' in middleware.auth.ts`
+      );
+
+      res.send("Account opening failed, contact admin");
+      return;
+    }
+    next();
+  } catch (error) {
+    loggerWrapper.error(
+      `${error}: Error occurred while checking blacklist in middleware.auth.ts`
+    );
+  }
+};
