@@ -5,15 +5,23 @@ export async function up(knex: Knex): Promise<void> {
 
   return knex.schema.createTable("transactions", (table) => {
     table.uuid("id").primary().defaultTo(knex.raw("(UUID())"));
-    table.string("wallet_id").notNullable().unique();
-    table.string("user_id").notNullable().unique();
+    table
+      .uuid("wallet_id")
+      .notNullable()
+      .references("id")
+      .inTable("wallets")
+      .onDelete("CASCADE");
+    table
+      .uuid("user_id")
+      .notNullable()
+      .references("id")
+      .inTable("users")
+      .onDelete("CASCADE");
     table.decimal("amount").notNullable();
     table.string("currency").defaultTo("NGN");
-    table.string("recipient_wallet_name").notNullable();
-    table.string("recipient_wallet_number").notNullable();
-    table.string("recipient_user_id").notNullable();
-    table.string("sender_name").notNullable();
-    table.string("sender_bank").notNullable();
+    table.string("recipient_wallet_name").nullable();
+    table.string("recipient_wallet_number").nullable();
+    table.string("sender_name").nullable();
     table.enu("type", ["fund", "transfer", "withdraw"]).notNullable();
     table.timestamps(true, true);
   });

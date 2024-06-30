@@ -1,4 +1,4 @@
-import { User } from '../shared/interface';
+import { User } from "./src/shared/interface";
 
 // to make the file a module and avoid the TypeScript error
 export {};
