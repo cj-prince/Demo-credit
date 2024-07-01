@@ -83,13 +83,17 @@ ___
 - ExpressJS
 - TypeScript
 - KnexJS
-- Postman
 - mySQL
 
 ---
+
+E-R Diagram 
+
+![alt text](demo.png)
 
 ## Copyright
 
 Copyright (c) 2024 cj-prince
 
 ---
+
