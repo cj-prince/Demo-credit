@@ -107,8 +107,8 @@ export const checkBlacklist = async (
         Authorization: `Bearer ${Env.get<string>("KARMA_API_KEY")}`,
       },
     });
-    const check = response.data.message;
-    if (check !== "Identity not found in karma") {
+
+    if (response.status === 200) {
       loggerWrapper.error(
         `${email}: User is blacklisted in middleware.auth.ts`
       );
@@ -116,11 +116,23 @@ export const checkBlacklist = async (
       res.status(403).send("Account opening failed, contact admin");
       return;
     }
+
     next();
   } catch (error) {
-    loggerWrapper.error(
-      `${error}: Error occurred while checking blacklist in middleware.auth.ts`
-    );
-    res.status(500).send("Internal Server Error");
+    if (axios.isAxiosError(error)) {
+      if (error.response && error.response.status === 404) {
+        next();
+      } else {
+        loggerWrapper.error(
+          `${error}: Error occurred while checking blacklist in middleware.auth.ts`
+        );
+        res.status(500).send("Internal Server Error");
+      }
+    } else {
+      loggerWrapper.error(
+        `${error}: Non-Axios error occurred while checking blacklist in middleware.auth.ts`
+      );
+      res.status(500).send("Internal Server Error");
+    }
   }
 };

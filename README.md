@@ -50,7 +50,7 @@ The folder structure of this app is explained below:
 |     **shared**              | Contains shared directories used by various modules across the applications.|
 |     **routes**         | Contains routes for all modules, and also route versioning |
 | **index.ts**             | Entry point to express app      |
-| **tests**                | Contains all integration and unit test codes                         |
+| **tests**                | Contains all unit test codes                         |
 | **eslintrc.json**        | Config settings for eslint code style checking    |
 | **database.json**        | Contains databases url            |
 | **package.json**         | Contains npm dependencies as well as build scripts  |  
@@ -74,7 +74,7 @@ Npm scripts basically allow us to call (and chain) terminal commands via npm.
 
 ---
 ## Postman API Documentation
-https://app.getpostman.com/join-team?invite_code=06a84e868d7454960b970fc354920b69&target_code=1cec8d5c779b1c6d28682a56da9e49c3
+https://interstellar-trinity-553512.postman.co/workspace/My-Workspace~a55701d2-d4e6-4393-8e9c-c314a688cd39/documentation/16121836-d5a133e6-5c2e-4e40-9047-10e1088d29ef
 ___
 
 ## Technologies
