@@ -74,7 +74,7 @@ Npm scripts basically allow us to call (and chain) terminal commands via npm.
 
 ---
 ## Postman API Documentation
-https://interstellar-trinity-553512.postman.co/workspace/My-Workspace~a55701d2-d4e6-4393-8e9c-c314a688cd39/documentation/16121836-d5a133e6-5c2e-4e40-9047-10e1088d29ef
+https://interstellar-trinity-553512.postman.co/documentation/16121836-d5a133e6-5c2e-4e40-9047-10e1088d29ef/publish?workspaceId=a55701d2-d4e6-4393-8e9c-c314a688cd39
 ___
 
 ## Technologies
