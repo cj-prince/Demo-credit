@@ -1,6 +1,5 @@
 import { StatusCodes } from "http-status-codes";
 import * as dtos from "./dto";
-// import Env from "../../shared/utils/env";
 import { fnRequest } from "../../shared/types";
 import AuthenticationService from "./services";
 import * as message from "../../shared/lib/message";

@@ -71,6 +71,6 @@ export class UserController {
 };
 
 
-const userControlle = new UserController();
+const userController = new UserController();
 
-export default userControlle;
+export default userController;

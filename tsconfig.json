@@ -1,12 +1,15 @@
 {
   "ts-node": { "files": true },
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "es6",
     "module": "commonjs",
-    "strict": true,
-    "moduleResolution": "node",
+    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+    "types": ["mocha"],
     "skipLibCheck": true,
     "sourceMap": true,
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "typeRoots": ["src/shared/types"],
     "removeComments": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -15,17 +18,25 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src"
+    "baseUrl": "."
   },
-  "include": ["./src/**/*.ts", "tests/**/*.ts", "request.d.ts"],
-  "exclude": ["node_modules", "dist", "tests", ".src/config/logger"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests",
+    ".src/config/logger",
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "tests/**/*.ts",
+    "request.d.ts"
+  ]
 }
+
+
