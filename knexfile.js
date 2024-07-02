@@ -1,8 +1,8 @@
-require("ts-node/register");
-const { config } = require("dotenv");
+import "ts-node/register";
+import { config } from "dotenv";
 config();
 
-module.exports = {
+export default {
   development: {
     client: "mysql2",
     connection: {
